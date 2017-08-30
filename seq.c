@@ -1,3 +1,24 @@
+/**
+  SBEAT: A classic MacOS 9 app of breeding tool for musical composition
+  developed by T. Unemi in 2001
+  Copyright (C) 2013  unemi
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+**/
+
+
 #include  <stdio.h>
 #include	<string.h>
 #include	<QuickTimeMusic.h>
@@ -175,7 +196,7 @@ Boolean cymbalP(short part, short note, BarInfo *pi) {
 	unsigned char	*ls = timbreList[pi->drumsInst[part - DsPercPart] & 0xff];
 	note = ls[((note & 0x7f) % ls[0]) + 1] - FirstDsPitch;
 	return ((CymbalFlags[note / 8] & (0x80 >> (note % 8))) != 0);
-} 
+}
 short cntlID[] = {
 /*	kControllerModulationWheel, */
 /*	kControllerBreath, */
@@ -306,7 +327,7 @@ static void stuff_note_event(short part, short pitch, short vel, long duration) 
 	if (32 <= pitch && pitch <= 95 && duration < 0x800) {
 		qtma_StuffNoteEvent(Tune->tune[tuneIndex], part+1, pitch, vel, duration);
 		tuneIndex ++;
-	} else { 
+	} else {
 		qtma_StuffXNoteEvent(Tune->tune[tuneIndex], Tune->tune[tuneIndex+1],
 			part+1, pitch, vel, duration);
 		tuneIndex += 2;
@@ -859,7 +880,7 @@ static void monitorx(TuneStatus *st) {
 	line[0] = strlen((char *)line+1); MoveTo(10,160); DrawString(line);
 	sprintf((char *)line+1, "NextWin=0x%X, NextID=%d", NextWin, NextID);
 	line[0] = strlen((char *)line+1); MoveTo(10,180); DrawString(line);
-	
+
 	SetPort(oldport);
 }
 #endif

@@ -1,3 +1,24 @@
+/**
+  SBEAT: A classic MacOS 9 app of breeding tool for musical composition
+  developed by T. Unemi in 2001
+  Copyright (C) 2013  unemi
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+**/
+
+
 #include  <stdio.h>
 #include	<string.h>
 #include	"decl.h"
@@ -648,7 +669,7 @@ static void shrink_integ(SBIntegrator *si) {
 		if (ItgOnP(scorep, k)) onMask |= m;
 		if (ItgSelectedP(scorep, k))
 			{ nselb ++; scorep[k].flag &= ~ItgSelectedFlag; }
-	} 
+	}
 	HUnlock((Handle)si->scoreHandle);
 	enque_integ_history(HistIShrink, si, onMask, 0);
 	SetHandleSize((Handle)si->scoreHandle,
@@ -878,7 +899,7 @@ static short find_section(SBIntegrator *si, Point where, short *part) {
 	row = (y = where.v + si->scroll - intWinTopSpace) / si->barHeight;
 	if ((y -= row * si->barHeight) > SubWinPHeight / si->displayScale) return -1;
 	if (part) *part = y * si->displayScale / PartHeight;
-	return row * si->nSectionsW + ((where.h - WinLeftSpace) / si->barWidth);	
+	return row * si->nSectionsW + ((where.h - WinLeftSpace) / si->barWidth);
 }
 static void click_scroll_bar(SBIntegrator *si, Point where, short modifiers) {
 	static	DragGrayRgnUPP		thumbUPP = NULL;

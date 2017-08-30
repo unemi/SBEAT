@@ -1,3 +1,24 @@
+/**
+  SBEAT: A classic MacOS 9 app of breeding tool for musical composition
+  developed by T. Unemi in 2001
+  Copyright (C) 2013  unemi
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+**/
+
+
 #include  <stdio.h>
 #include	<string.h>
 #include	"decl.h"
@@ -131,8 +152,8 @@ enum {	// index ID of Help tags
 #define	poptionRDsclsr	0xc00
 #define	poptionKindMask	0xf00
 #define	poptionPartMask	0x0ff
-#define	getColumnID(v)	((((v)>>12)&0x0f)-1)	
-#define	columnID(id)	(((id)+1)<<12) 
+#define	getColumnID(v)	((((v)>>12)&0x0f)-1)
+#define	columnID(id)	(((id)+1)<<12)
 extern	RGBColor	partColor[];
 static	char	*partIDNames[] = {
 	"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13",
@@ -169,7 +190,7 @@ static void set_text(ControlRef txt, unsigned char *pstr) {
 	SetControlData(txt, kControlEntireControl,
 		kControlStaticTextTextTag, pstr[0], pstr + 1);
 	DrawOneControl(txt);
-}	
+}
 static void set_digits(ControlRef txt, long value) {
 	unsigned char	pstr[16];
 	NumToString(value, pstr);
@@ -288,7 +309,7 @@ static void draw_protection_indicator0(Rect *bound, short chromosome) {
 	rect.top = bound->top + chromosome * poptionButtonSize / 3;
 	rect.bottom = bound->top + (chromosome + 1) * poptionButtonSize / 3 - 2;
 	PaintRect(&rect);
-}	
+}
 static void draw_protection_indicator(short part, short chromosome) {
 	Rect	bound;
 	if (partClosed[(part < DsPercPart)? part : part + 1]) return;
