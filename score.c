@@ -1,3 +1,24 @@
+/**
+  SBEAT: A classic MacOS 9 app of breeding tool for musical composition
+  developed by T. Unemi in 2001
+  Copyright (C) 2013  unemi
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc.,
+  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+**/
+
+
 /*
   theScore[i] contains the basic score (0 ... 15)
 	ind->score[GuitarPart][i].note = 0 ... 15
@@ -91,7 +112,7 @@ void develop_score(Individual *ind, BarInfo *bi) {
 	for (p = DsPercPart; p < NTotalParts; p ++)
 	for (i = len = 0; i < NShortBeats; i ++)
 	switch (ind->score[p][i].note) {
-		case NoteRest: case NoteRemain: 
+		case NoteRest: case NoteRemain:
 		if (len > 0) {
 			len ++;
 			if (len > 4) { ind->score[p][i].note = NoteRest; len = 0; }
